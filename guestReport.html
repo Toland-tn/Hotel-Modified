@@ -1,0 +1,22 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <ol id = "List"></ol>
+        <button onclick="window.alert(guest)">Define</button>
+        <button onclick="addme()">Add</button>
+        <script>
+        var guest = localStorage.getItem('localLi')
+        function addme() {
+                //Create new li element
+                var newList = document.createElement("li");
+                //Combine user input that has been turned into a node to newList
+                newList.appendChild(document.createTextNode(guest));
+                //Create position variable to set ol to 0
+                var position = document.getElementById("List");
+                //Combine newList to position
+                position.appendChild(newList);
+            }
+        </script>
+    </body>
+</html>

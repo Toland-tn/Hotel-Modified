@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /* Initial color and universal aesthetics */
+        .dropbtn {
+            background-color: #a61414;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            /* Changes cursor to "mickey mouse" gloves */
+            cursor: pointer;
+        }
+
+        /* Change color when mouse hovers over box */
+        .dropbtn:hover,
+        .dropbtn:focus {
+            background-color: #990e0e;
+        }
+
+        .dropdown {
+            position: relative;
+            /* Input box on new line */
+            display: inline-block;
+        }
+
+        /* Content when opening drop down */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 120px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            /* Stack order (Higher goes on top of lower stack #)*/
+            z-index: 1;
+        }
+
+        p {
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            margin: 0px;
+        }
+
+        /* Change color when hover over drop down content */
+        .dropdown p:hover {
+            background-color: #ddd;
+        }
+
+        /* Used to show dropdown content and indicate if the content is being shown or not */
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <!--Have the dropdown stay on when inputing user info and clicking input!-->
+    <!--Remove dropdown when clicking outside of dropdown!-->
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+        <div id="myDropdown" class="dropdown-content">
+            <p><input id = 'testText' ></p>
+        </div>
+
+    </div>
+    <ol id="List"></ol>
+    <a href="guestReport.html">Guest Report</a>
+    <button onclick="nuke()">Nuke all Local Storage Keys and Values</button>
+    <script>
+        x = 0
+        //when words are put into input be on look out for enter key
+        var data = document.getElementById('testText')
+        //when a key had been pressed and it is the enter key run the addme function
+        data.addEventListener("keydown", dataEnterKey)
+
+        function nuke() {
+            localStorage.clear();
+            window.alert("All Cleared Out");
+        }
+
+
+        function dataEnterKey() {
+            if (event.keyCode === 13) {
+                addme()
+            }
+        }
+        //show dropdown content and also indicate it being shown
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+        //old addme function from hotel project
+        function addme() {
+            if (x < 4) {
+                //Create new li element
+                var newList = document.createElement("li");
+                //Combine user input that has been turned into a node to newList
+                newList.appendChild(document.createTextNode(document.getElementById('testText').value));
+                var passToStorage = document.getElementById('testText').value;
+                //Create position variable to set ol to 0
+                var position = document.getElementById("List");
+                //Combine newList to position
+                position.appendChild(newList);
+                document.getElementById('testText').value = ""
+                x++;
+                localStorage.setItem('localLi',passToStorage);
+                //localStorage.setItem('localLi', document.getElementById('testText').value)
+                //console.log(lsLi)
+            }
+        }
+        //Take the input data turn it into a text node
+        //BUT turn it into a local storage value and key
+        //When loading the report window onload the local data and put it in the ol in the report
+        function gReport() {
+          location.href = "GuestReport.html"
+        }
+        //when i click on the list...
+        document.getElementById("List").addEventListener("click", function (liTag) {
+            //find what i clicked on...
+            var rlist = liTag.target;
+            //if what i clicked on becomes "LI" when uppercasing it then...
+            if (rlist.tagName.toUpperCase() == "LI") {
+                //remove the li that was clicked on and remove it from the parent which is ol
+                rlist.parentNode.removeChild(rlist);
+            }
+        });
+
+        // Close the dropdown if the user clicks outside of it
+
+        //window.onclick = function(event) {
+        //if (!event.target.matches('.dropbtn')) {
+        //var dropdowns = document.getElementsByClassName("dropdown-content");
+        //var i;
+        //for (i = 0; i < dropdowns.length; i++) {
+        //var openDropdown = dropdowns[i];
+        //if (openDropdown.classList.contains('show')) {
+        //openDropdown.classList.remove('show');
+        //}
+        //}
+        //}
+        //}
+    </script>
+
+</body>
+
+</html>
