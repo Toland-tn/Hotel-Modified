@@ -1,0 +1,95 @@
+<html>
+
+<head>
+</head>
+
+<body>
+    <ol id="List"></ol>
+    <button onclick="window.alert(Room)">Define Room 1</button>
+    <button onclick="window.alert(Room2)">Define Room 2</button>
+    <button onclick="window.alert(Room3)">Define Room 3</button>
+    <button onclick="window.alert(Room4)">Define Room 4</button>
+    <button onclick="window.alert(Room5)">Define Room 5</button>
+    <button onclick="window.alert(Room6)">Define Room 6</button>
+    <button onclick="addAll()">Add</button>
+    <script>
+        //When user adds a guest, how does the page know the local item has been changed in order to add it?
+        var Room = localStorage.getItem('localLi')
+        var Room2 = localStorage.getItem('localLi2')
+        var Room3 = localStorage.getItem('localLi3')
+        var Room4 = localStorage.getItem('localLi4')
+        var Room5 = localStorage.getItem('localLi5')
+        var Room6 = localStorage.getItem('localLi6')
+        
+        function addAll() {
+            addme();
+            addme2();
+            addme3();
+            addme4();
+            addme5();
+            addme6();
+        }
+        function addme() {
+            //Create new li element
+            var newList = document.createElement("li");
+            //Combine user input that has been turned into a node to newList
+            newList.appendChild(document.createTextNode(Room));
+            //Create position variable to set ol to 0
+            var position = document.getElementById("List");
+            //Combine newList to position
+            position.appendChild(newList);
+        }
+        function addme2() {
+            //Create new li element
+            var newList = document.createElement("li");
+            //Combine user input that has been turned into a node to newList
+            newList.appendChild(document.createTextNode(Room2));
+            //Create position variable to set ol to 0
+            var position = document.getElementById("List");
+            //Combine newList to position
+            position.appendChild(newList);
+        }
+        function addme3() {
+            //Create new li element
+            var newList = document.createElement("li");
+            //Combine user input that has been turned into a node to newList
+            newList.appendChild(document.createTextNode(Room3));
+            //Create position variable to set ol to 0
+            var position = document.getElementById("List");
+            //Combine newList to position
+            position.appendChild(newList);
+        }
+        function addme4() {
+            //Create new li element
+            var newList = document.createElement("li");
+            //Combine user input that has been turned into a node to newList
+            newList.appendChild(document.createTextNode(Room4));
+            //Create position variable to set ol to 0
+            var position = document.getElementById("List");
+            //Combine newList to position
+            position.appendChild(newList);
+        }
+        function addme5() {
+            //Create new li element
+            var newList = document.createElement("li");
+            //Combine user input that has been turned into a node to newList
+            newList.appendChild(document.createTextNode(Room5));
+            //Create position variable to set ol to 0
+            var position = document.getElementById("List");
+            //Combine newList to position
+            position.appendChild(newList);
+        }
+        function addme6() {
+            //Create new li element
+            var newList = document.createElement("li");
+            //Combine user input that has been turned into a node to newList
+            newList.appendChild(document.createTextNode(Room6));
+            //Create position variable to set ol to 0
+            var position = document.getElementById("List");
+            //Combine newList to position
+            position.appendChild(newList);
+        }
+    </script>
+</body>
+
+</html>
